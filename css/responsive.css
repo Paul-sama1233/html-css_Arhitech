@@ -1,0 +1,82 @@
+@media (max-width: 768px) {
+    .brand-title {
+        font-size: 42px;
+        letter-spacing: 4px;
+    }
+    
+    .brand-subtitle {
+        font-size: 18px;
+    }
+    
+    nav {
+        display: none;
+    }
+    
+    nav.mobile-active {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    
+    nav.mobile-active ul {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .hero-slider {
+        height: 400px;
+    }
+    
+    .slide-content h2 {
+        font-size: 32px;
+    }
+    
+    .slide-content p {
+        font-size: 18px;
+    }
+    
+    .slider-btn {
+        font-size: 24px;
+        padding: 10px 15px;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .phones {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .catalog-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}

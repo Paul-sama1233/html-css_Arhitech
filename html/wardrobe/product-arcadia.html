@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гардероб «АРКАДИЯ» - ARHITECH</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e4179 100%);
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        
+        .breadcrumb {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+        
+        .product-detail {
+            padding: 60px 0;
+        }
+        
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .product-gallery {
+            position: sticky;
+            top: 100px;
+        }
+        
+        .product-gallery img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-info h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #2c5aa0;
+        }
+        
+        .product-icons {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .product-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+        
+        .product-description {
+            margin: 30px 0;
+            line-height: 1.8;
+            color: #666;
+        }
+        
+        .product-description h3 {
+            color: #2c5aa0;
+            margin: 20px 0 15px;
+            font-size: 22px;
+        }
+        
+        .product-description p {
+            margin-bottom: 15px;
+        }
+        
+        .product-description strong {
+            color: #333;
+        }
+        
+        .product-features {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .product-features h3 {
+            color: #2c5aa0;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        .product-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .product-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .product-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .order-form {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        
+        .order-form h3 {
+            color: #2c5aa0;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .order-form p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2c5aa0;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: #2c5aa0;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #1e4179;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(44, 90, 160, 0.3);
+        }
+        
+        .form-note {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #999;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .product-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .product-gallery {
+                position: static;
+            }
+            
+            .product-info h1 {
+                font-size: 28px;
+            }
+            
+            .order-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="phones">
+                    <a href="tel:+998974025548">+998 (97) 402-55-48</a>
+                    <a href="tel:+998974025549">+998 (97) 402-55-49</a>
+                </div>
+                <div class="working-hours">Пн-Сб: 09:00-18:00</div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <a href="../index.html" class="logo">WALLMANN</a>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="../index.html#catalog">Каталог</a></li>
+                        <li><a href="../index.html#about">О компании</a></li>
+                        <li><a href="../index.html#reviews">Отзывы</a></li>
+                        <li><a href="../index.html#contacts">Контакты</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <a href="#" class="cta-button" id="openModalBtn">Связаться</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Заголовок страницы -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Гардероб «АРКАДИЯ»</h1>
+            <p class="breadcrumb">
+                <a href="../index.html">Главная</a> / 
+                <a href="index.html">Гардеробные</a> / 
+                Гардероб «АРКАДИЯ»
+            </p>
+        </div>
+    </section>
+
+    <!-- Детали товара -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-detail-grid">
+                <!-- Галерея -->
+                <div class="product-gallery">
+                    <img src="https://via.placeholder.com/600x500/2c5aa0/ffffff?text=Гардероб+АРКАДИЯ" alt="Гардероб АРКАДИЯ">
+                </div>
+
+                <!-- Информация о товаре -->
+                <div class="product-info">
+                    <h1>Гардероб «АРКАДИЯ»</h1>
+                    
+                    <div class="product-icons">
+                        <img src="https://via.placeholder.com/40/4CAF50/ffffff?text=✓" 
+                             alt="Гарантия 3 года" 
+                             title="Гарантия качества 3 года">
+                        <img src="https://via.placeholder.com/40/2196F3/ffffff?text=💳" 
+                             alt="Рассрочка" 
+                             title="Рассрочка на 12 месяцев">
+                    </div>
+                    
+                    <div class="product-description">
+                        <h3>Описание:</h3>
+                        <p><strong>Гардероб, созданный для вас.</strong></p>
+                        
+                        <p>• <strong>Удобство в деталях.</strong> Выдвижные полки, пантографы, брючницы, полки для обуви и продуманные ячейки для мелочей — всё организовано для комфорта и порядка.</p>
+                        
+                        <p>• <strong>Функциональный свет.</strong> Встроенная подсветка и автоматическое освещение при открытии дверей обеспечивают максимальную видимость и уют даже в тёмное время суток.</p>
+                        
+                        <p>• <strong>Практичное оснащение.</strong> Элегантные фасады, более 180 вариантов оттенков, компланарные системы, а также премиальная фурнитура из Турции и Австрии — каждая деталь работает на стиль и долговечность.</p>
+                        
+                        <p>• <strong>Полная адаптация под вас.</strong> Любые размеры, формы и внутреннее наполнение. Мы создаём не стандарт, а решение именно для вашего пространства.</p>
+                        
+                        <p><em>Изготавливается от 10 до 20 дней.</em></p>
+                        
+                        <p>Расскажите нам, каким вы видите идеальный гардероб — остальное мы берём на себя.</p>
+                    </div>
+
+                    <div class="product-features">
+                        <h3>Преимущества:</h3>
+                        <ul>
+                            <li>✓ Замер помещения бесплатно</li>
+                            <li>✓ Индивидуальное проектирование</li>
+                            <li>✓ Учет пожеланий заказчика</li>
+                            <li>✓ Выбор материала, цвета, стиля, дизайна</li>
+                            <li>✓ Высокое качество мебели</li>
+                            <li>✓ Оперативная доставка и квалифицированная сборка</li>
+                            <li>✓ Гарантия качества</li>
+                            <li>✓ Доступная стоимость</li>
+                        </ul>
+                    </div>
+
+                    <!-- Форма заказа -->
+                    <div class="order-form">
+                        <h3>Оформление заказа</h3>
+                        <p>Заполните форму ниже, и наш менеджер свяжется с вами в ближайшее время для уточнения деталей заказа.</p>
+                        
+                        <form id="orderForm">
+                            <div class="form-group">
+                                <label for="name">Ваше имя *</label>
+                                <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Номер телефона *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+998">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="comment">Комментарий</label>
+                                <textarea id="comment" name="comment" placeholder="Опишите ваши пожелания к гардеробу"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Отправить заявку</button>
+                            
+                            <p class="form-note">
+                                Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>Wallmann - производство качественной мебели на заказ в Ташкенте и по всему Узбекистану.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="tel:+998974025548">+998 (97) 402-55-48</a></li>
+                        <li><a href="tel:+998974025549">+998 (97) 402-55-49</a></li>
+                        <li>Пн-Сб, 09:00-18:00</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Каталог</h3>
+                    <ul>
+                        <li><a href="../bedroom/index.html">Спальни</a></li>
+                        <li><a href="../kitchen/index.html">Кухни</a></li>
+                        <li><a href="index.html">Гардеробные</a></li>
+                        <li><a href="../kids/index.html">Детская мебель</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Информация</h3>
+                    <ul>
+                        <li><a href="../index.html#about">О компании</a></li>
+                        <li><a href="../index.html#reviews">Отзывы</a></li>
+                        <li><a href="../index.html#contacts">Контакты</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>©2025 Wallmann | Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn">×</button>
+            <h2>Заказать звонок</h2>
+            <p>Оставьте свой номер телефона, и мы вам перезвоним</p>
+            <form id="callbackForm">
+                <div class="form-group">
+                    <label for="modal-phone">Ваш номер телефона</label>
+                    <input type="tel" id="modal-phone" name="phone" required placeholder="+998">
+                </div>
+                <button type="submit" class="submit-btn">Заказать звонок</button>
+                <p style="margin-top: 15px; font-size: 12px; color: #666;">Звоним с 9:00 до 18:00, пн-сб</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/forms.js"></script>
+</body>
+</html>

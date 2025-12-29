@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARHITECH - Мебель на заказ в Ташкенте</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/catalog.css">
+    <link rel="stylesheet" href="css/products.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="header-main">
+            <div class="container">
+                <a href="index.html" class="logo">ARHITECH</a>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#catalog">Каталог</a></li>
+                        <li><a href="#about">О компании</a></li>
+                        <li><a href="#reviews">Отзывы</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <a href="#" class="cta-button" id="openModalBtn">Связаться</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Брендинг -->
+    <section class="branding">
+        <div class="container">
+            <h1 class="brand-title">ARHITECH</h1>
+            <p class="brand-subtitle"><i>Sub SoftStyle.uz</i></p>
+        </div>
+    </section>
+
+    <!-- Слайдер -->
+    <section class="hero-slider">
+        <div class="slider-container">
+            <div class="slide active">
+                <img src="images/slider/slide1.jpg" alt="Мебель 1">
+                <div class="slide-content">
+                    <h2>ЗАМЕР И ДИЗАЙН БЕСПЛАТНО</h2>
+                    <p>Гарантия три года на всю мебель</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/slider/slide2.jpg" alt="Мебель 2">
+                <div class="slide-content">
+                    <h2>СОБСТВЕННОЕ ПРОИЗВОДСТВО</h2>
+                    <p>180+ цветов и фактур на выбор</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/slider/slide3.jpg" alt="Мебель 3">
+                <div class="slide-content">
+                    <h2>МЕБЕЛЬ В РАССРОЧКУ</h2>
+                    <p>Премиальная фурнитура из Турции и Австрии</p>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn prev" id="prevSlide">❮</button>
+        <button class="slider-btn next" id="nextSlide">❯</button>
+        <div class="slider-dots" id="sliderDots"></div>
+    </section>
+
+    <!-- Каталог -->
+    <section class="catalog-section" id="catalog">
+        <div class="container">
+            <h2 class="section-title">Каталог мебели</h2>
+            <div class="catalog-grid">
+                <a href="bedroom/index.html" class="catalog-item">
+                    <img src="images/products/bedroom_logo.jpeg" alt="Спальные гарнитуры">
+                    <div class="catalog-item-content">
+                        <h3>Спальни</h3>
+                    </div>
+                </a>
+                <a href="kitchen/index.html" class="catalog-item">
+                    <img src="images/products/kitchen_logo.jpeg" alt="Кухни">
+                    <div class="catalog-item-content">
+                        <h3>Кухни</h3>
+                    </div>
+                </a>
+                <a href="hallway/index.html" class="catalog-item">
+                    <img src="images/products/hallway_logo.jpeg" alt="Прихожие">
+                    <div class="catalog-item-content">
+                        <h3>Прихожие</h3>
+                    </div>
+                </a>
+                <a href="wardrobe/index.html" class="catalog-item">
+                    <img src="images/products/wardrobe_logo.jpeg" alt="Гардеробные">
+                    <div class="catalog-item-content">
+                        <h3>Гардероб</h3>
+                    </div>
+                </a>
+                <a href="wardrobes/index.html" class="catalog-item">
+                    <img src="images/products/wardrobe_logo.jpeg" alt="Шкафы-купе">
+                    <div class="catalog-item-content">
+                        <h3>Шкафы</h3>
+                    </div>
+                </a>
+                <a href="images/products/wardrobe_logo.jpeg" class="catalog-item">
+                    <img src="images/products/wardrobe_logo.jpeg" alt="Шкафы-купе">
+                    <div class="catalog-item-content">
+                        <h3>Шкафы-купе</h3>
+                    </div>
+                </a>
+                <a href="living_room/index.html" class="catalog-item">
+                    <img src="images/products/living_room_logo.jpeg" alt="Гостиные">
+                    <div class="catalog-item-content">
+                        <h3>Гостиные</h3>
+                    </div>
+                </a>
+                <a href="kids/index.html" class="catalog-item">
+                    <img src="images/products/kids_room_logo.jpeg" alt="Детские">
+                    <div class="catalog-item-content">
+                        <h3>Детские</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Популярные продукты -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Популярные модели</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x250/2c5aa0/ffffff?text=Мемфис" alt="Спальня Мемфис">
+                    <div class="product-card-content">
+                        <span class="product-badge">Новинка</span>
+                        <h3>СПАЛЬНЯ «МЕМФИС»</h3>
+                        <p class="product-price">Цена: 11 645 000 сум</p>
+                        <div class="product-icons">
+                            <img src="https://via.placeholder.com/30/4CAF50/ffffff?text=✓" alt="Гарантия">
+                            <img src="https://via.placeholder.com/30/2196F3/ffffff?text=💳" alt="Рассрочка">
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x250/1e4179/ffffff?text=Фелиция" alt="Кухня Фелиция">
+                    <div class="product-card-content">
+                        <h3>КУХНЯ «ФЕЛИЦИЯ»</h3>
+                        <p class="product-price">Цена: 4 400 000 сум</p>
+                        <div class="product-icons">
+                            <img src="https://via.placeholder.com/30/4CAF50/ffffff?text=✓" alt="Гарантия">
+                            <img src="https://via.placeholder.com/30/2196F3/ffffff?text=💳" alt="Рассрочка">
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x250/2c5aa0/ffffff?text=Элия" alt="Кухня Элия">
+                    <div class="product-card-content">
+                        <h3>КУХНЯ «ЭЛИЯ»</h3>
+                        <p class="product-price">Цена: 4 400 000 сум</p>
+                        <div class="product-icons">
+                            <img src="https://via.placeholder.com/30/4CAF50/ffffff?text=✓" alt="Гарантия">
+                            <img src="https://via.placeholder.com/30/2196F3/ffffff?text=💳" alt="Рассрочка">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">О компании</h2>
+            <div class="about-content">
+                <div>
+                    <h3>20 лет на рынке</h3>
+                    <p>Мы создаём не просто обстановку — мы оформляем пространство под ваш образ жизни. Вы можете купить готовую мебель или
+                        заказать проект по своим размерам и стилю. Работаем по всему Узбекистану.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">20+</div>
+                            <div class="stat-label">лет на рынке</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">450+</div>
+                            <div class="stat-label">довольных клиентов</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3>Почему выбирают нас:</h3>
+                    <ul style="line-height: 2;">
+                        <li>✓ Быстро: производство мебели — от 15 до 30 дней</li>
+                        <li>✓ Надёжно: гарантия от 12 месяцев</li>
+                        <li>✓ Удобно: выезд и замер — бесплатно</li>
+                        <li>✓ Под ключ: от идеи до установки</li>
+                        <li>✓ Опыт: более 20 лет на рынке</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы клиентов</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">EU</div>
+                        <div>
+                            <h4>Elina Usmanova</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>Заказывала кухню и гардероб. Все очень понравилось, в сроки, даже чуть раньше. Не было проблем с установкой.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">EC</div>
+                        <div>
+                            <h4>Eugeny Craft</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>Заказал мебель для спальни, сделали в срок и качественно. Отличные ребята, профессионалы своего дела.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">СД</div>
+                        <div>
+                            <h4>Салават Давледяров</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>Заказал спальню - сняли замеры, изготовили, установили. Работа выполнена в лучшем виде.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>Arhitech - производство мебели на заказ в Ташкенте.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="tel:+998958106664">+998 (95) 810-66-64</a></li>
+                        <li><a href="tel:+998981211765">+998 (98) 121-17-65</a></li>
+                        <li>Пн-Сб, 09:00-18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>©2025 Arhitech | Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn">×</button>
+            <h2>Заказать звонок</h2>
+            <p>Оставьте свой номер телефона, и мы вам перезвоним</p>
+            <form id="callbackForm">
+                <div class="form-group">
+                    <label for="modal-phone">Ваш номер телефона</label>
+                    <input type="tel" id="modal-phone" name="phone" required placeholder="+998">
+                </div>
+                <button type="submit" class="submit-btn">Заказать звонок</button>
+                <p style="margin-top: 15px; font-size: 12px; color: #666;">Звоним с 9:00 до 18:00, пн-сб</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/forms.js"></script>
+</body>
+</html>
+
