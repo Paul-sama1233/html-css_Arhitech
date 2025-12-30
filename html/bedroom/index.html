@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спальные гарнитуры - ARHITECH</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+<style>
+        /* Заголовок страницы */
+        .page-hero {
+            background: #fff;
+            padding: 40px 0 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .page-hero h1 {
+            font-size: 42px;
+            color: #2c5aa0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .page-description {
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb {
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .breadcrumb a {
+            color: #2c5aa0;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Боковая панель категорий */
+        .category-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar-title {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .category-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category-list li {
+            margin-bottom: 2px;
+        }
+
+        .category-list a {
+            display: block;
+            padding: 12px 15px;
+            color: #666;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .category-list a:hover {
+            background: #f0f4ff;
+            color: #2c5aa0;
+            padding-left: 20px;
+        }
+
+        .category-list a.active {
+            background: #2c5aa0;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Сетка товаров */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-badges {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 10;
+        }
+
+        .badge {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .badge img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .product-title:hover {
+            color: #2c5aa0;
+        }
+
+        .product-price {
+            font-size: 20px;
+            color: #2c5aa0;
+            font-weight: bold;
+        }
+
+        .product-price-label {
+            font-size: 13px;
+            color: #999;
+            text-transform: uppercase;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .category-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                margin-bottom: 30px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .page-hero h1 {
+                font-size: 32px;
+            }
+        }
+        /* === СВЕРНУТЫЙ КАТАЛОГ (клик по active) === */
+        .category-list li {
+            overflow: hidden;
+        }
+
+        .category-list a {
+            transition: all 0.3s ease;
+        }
+
+        /* скрыты все кроме активной */
+        .category-list a:not(.active) {
+            max-height: 0;
+            opacity: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            pointer-events: none;
+        }
+
+        /* активная категория */
+        .category-list a.active {
+            background: #2c5aa0;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* стрелка у активной */
+        .category-list a.active::after {
+            content: "▾";
+            position: absolute;
+            right: 15px;
+            transition: transform 0.3s;
+        }
+
+        /* раскрытое состояние */
+        .category-list.expanded a:not(.active) {
+            max-height: 60px;
+            opacity: 1;
+            padding: 12px 15px;
+            pointer-events: auto;
+        }
+
+        /* стрелка вверх */
+        .category-list.expanded a.active::after {
+            transform: rotate(180deg);
+        }
+        /* === LANGUAGE SWITCHER === */
+        .language-selector {
+            position: relative;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .lang-toggle:hover {
+            background: #f5f7ff;
+            border-color: #2c5aa0;
+        }
+
+        .lang-flag {
+            font-size: 18px;
+        }
+
+        .lang-text {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .lang-arrow {
+            font-size: 12px;
+            transition: transform 0.25s;
+        }
+
+        /* dropdown */
+        .lang-dropdown {
+            position: absolute;
+            right: 0;
+            top: calc(100% + 6px);
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            list-style: none;
+            padding: 6px 0;
+            min-width: 120px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-5px);
+            transition: all 0.25s;
+            z-index: 1000;
+        }
+
+        .lang-dropdown li {
+            padding: 8px 14px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .lang-dropdown li:hover {
+            background: #f0f4ff;
+        }
+
+        /* open state */
+        .language-selector.open .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-selector.open .lang-arrow {
+            transform: rotate(180deg);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="phones">
+                    <a href="tel:+998974025548">+998 (97) 402-55-48</a>
+                    <a href="tel:+998974025549">+998 (97) 402-55-49</a>
+                </div>
+                <div class="working-hours">Пн-Сб: 09:00-18:00</div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <a href="../../index.html" class="logo">ARHITECH</a>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="../../index.html#catalog">Каталог</a></li>
+                        <li><a href="../../index.html#about">О компании</a></li>
+                        <li><a href="../../index.html#contacts">Контакты</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <div class="language-selector">
+                    <div class="language-selector">
+                        <button class="lang-toggle" id="languageBtn" aria-expanded="false">
+                            <span class="lang-flag" id="currentFlag">🇷🇺</span>
+                            <span class="lang-text" id="currentLang">Рус</span>
+                            <span class="lang-arrow">▾</span>
+                        </button>
+
+                        <ul class="lang-dropdown" id="languageMenu">
+                            <li data-lang="ru" data-flag="🇷🇺">Русский</li>
+                            <li data-lang="uz" data-flag="🇺🇿">O‘zbek</li>
+                        </ul>
+                    </div>
+
+                    </div>
+                </div>
+        </div>
+    </header>
+
+    <!-- Заголовок страницы -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Спальня</h1>
+            <p class="page-description">
+                Спальня на заказ в Ташкенте. Мебель от производителя.
+            </p>
+            <div class="breadcrumb">
+                <a href="../../index.html">Главная</a> / Спальня
+            </div>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <div class="container">
+        <div class="category-layout">
+            <!-- Боковое меню -->
+            <aside class="sidebar">
+                <h3 class="sidebar-title">Каталог</h3>
+                <ul class="category-list">
+                    <li><a href="index.html" class="active">Спальня</a></li>
+                    <li><a href="../kitchen/index.html">Кухни</a></li>
+                    <li><a href="../hallway/index.html">Прихожие</a></li>
+                    <li><a href="../wardrobe/index.html">Гардеробные</a></li>
+                    <li><a href="../closet/index.html">Шкафы</a></li>
+                    <li><a href="../wardrobe/index.html">Шкафы-купе</a></li>
+                    <li><a href="../living_room/index.html">Гостиные</a></li>
+                    <li><a href="../kids/index.html">Детская</a></li>
+                </ul>
+
+            </aside>
+
+            <!-- Сетка товаров -->
+            <main>
+                <div class="products-grid">
+                    <!-- Товар 1 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <a href="product-rogue.html">
+                                <img src="../../images/products/обвинитель.jpeg" alt="СПАЛЬНЯ Обвинитель">
+                            </a>
+                            <div class="product-badges">
+                                <div class="badge" title="Гарантия 3 года">
+                                    <img src="https://api.iconify.design/mdi/shield-check.svg?color=%234CAF50" alt="Гарантия">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <a href="product-rogue.html" class="product-title">СПАЛЬНЯ «Обвинитель»</a>
+                            <div class="product-price">10 400 000 сум</div>
+                        </div>
+                    </article>
+
+                    <!-- Товар 2 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <a href="product-lira.html">
+                                <img src="../../images/products/предатор.jpeg" alt="Спальня Предатор">
+                            </a>
+                            <div class="product-badges">
+                                <div class="badge" title="Гарантия 3 года">
+                                    <img src="https://api.iconify.design/mdi/shield-check.svg?color=%234CAF50" alt="Гарантия">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <a href="product-lira.html" class="product-title">Спальня «Предатор»</a>
+                            <div class="product-price">11 775 000 сум</div>
+                        </div>
+                    </article>
+
+                    <!-- Товар 3 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <a href="product-memfis.html">
+                                <img src="../../images/products/izr1.jpeg" alt="IZR1">
+                            </a>
+                            <div class="product-badges">
+                                <div class="badge" title="Гарантия 3 года">
+                                    <img src="https://api.iconify.design/mdi/shield-check.svg?color=%234CAF50" alt="Гарантия">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <a href="product-memfis.html" class="product-title">СПАЛЬНЯ «IZR1»</a>
+                            <div class="product-price">11 645 000 сум</div>
+                        </div>
+                    </article>
+
+                    <!-- Товар 4 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <a href="product-velislava.html">
+                                <img src="../../images/products/aclamator.jpeg" alt="СПАЛЬНЯ Универсал">
+                            </a>
+                            <div class="product-badges">
+                                <div class="badge" title="Гарантия 3 года">
+                                    <img src="https://api.iconify.design/mdi/shield-check.svg?color=%234CAF50" alt="Гарантия">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <a href="product-velislava.html" class="product-title">СПАЛЬНЯ «Универсал»</a>
+                            <div class="product-price">11 780 000 сум</div>
+                        </div>
+                    </article>
+
+                    <!-- Товар 5 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <a href="product-eliya.html">
+                                <img src="../../images/products/освободитель.jpeg" alt="СПАЛЬНЯ Освободитель">
+                            </a>
+                            <div class="product-badges">
+                                <div class="badge" title="Гарантия 3 года">
+                                    <img src="https://api.iconify.design/mdi/shield-check.svg?color=%234CAF50" alt="Гарантия">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <a href="product-eliya.html" class="product-title">СПАЛЬНЯ «Освободитель»</a>
+                            <div class="product-price">12 300 000 сум</div>
+                        </div>
+                    </article>
+
+                    <!-- Товар 6 -->
+                    <article class="product-card">
+                        <div class="product-image">
+                            <a href="product-medina.html">
+                                <img src="../../images/products/узурпатор.jpeg" alt="СПАЛЬНЯ Узурпатор">
+                            </a>
+                            <div class="product-badges">
+                                <div class="badge" title="Гарантия 3 года">
+                                    <img src="https://api.iconify.design/mdi/shield-check.svg?color=%234CAF50" alt="Гарантия">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <a href="product-medina.html" class="product-title">СПАЛЬНЯ «Узурпатор»</a>
+                            <div class="product-price">12 425 000 сум</div>
+                        </div>
+                    </article>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>ARHITECH - производство качественной мебели на заказ в Ташкенте и по всему Узбекистану.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="tel:+998974025548">+998 (97) 402-55-48</a></li>
+                        <li><a href="tel:+998974025549">+998 (97) 402-55-49</a></li>
+                        <li>Пн-Сб, 09:00-18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>©2025 ARHITECH | Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/navigation.js"></script>
+    <script src="../../js/language.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const categoryList = document.querySelector('.category-list');
+        const activeLink = document.querySelector('.category-list a.active');
+
+        if (!categoryList || !activeLink) return;
+
+        activeLink.addEventListener('click', (e) => {
+            e.preventDefault(); // не переходим по ссылке
+            categoryList.classList.toggle('expanded');
+        });
+    });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const selector = document.querySelector('.language-selector');
+        const btn = document.getElementById('languageBtn');
+        const menu = document.getElementById('languageMenu');
+        const currentLang = document.getElementById('currentLang');
+        const currentFlag = document.getElementById('currentFlag');
+
+        btn.addEventListener('click', () => {
+            selector.classList.toggle('open');
+        });
+
+        menu.querySelectorAll('li').forEach(item => {
+            item.addEventListener('click', () => {
+                currentLang.textContent = item.textContent;
+                currentFlag.textContent = item.dataset.flag;
+
+                selector.classList.remove('open');
+
+                // 🔹 здесь твоя существующая логика смены языка
+                // setLanguage(item.dataset.lang);
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!selector.contains(e.target)) {
+                selector.classList.remove('open');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

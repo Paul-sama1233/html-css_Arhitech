@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СПАЛЬНЯ «Обвинитель» - ARHITECH</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+
+    <style>
+        /* Заголовок страницы */
+        .page-hero {
+            background: #fff;
+            padding: 30px 0 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .page-hero h1 {
+            font-size: 36px;
+            color: #2c5aa0;
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .breadcrumb a {
+            color: #2c5aa0;
+            text-decoration: none;
+        }
+
+        /* Макет страницы */
+        .product-layout {
+            display: block;
+            padding: 40px 0;
+        }
+
+        /* Боковое меню */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .category-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category-list li {
+            margin-bottom: 2px;
+        }
+
+        .category-list a {
+            display: block;
+            padding: 10px 12px;
+            color: #666;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .category-list a:hover {
+            background: #f0f4ff;
+            color: #2c5aa0;
+            padding-left: 16px;
+        }
+
+        .category-list a.active {
+            background: #2c5aa0;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Основной контент товара */
+        .product-main {
+            display: grid;
+            grid-template-columns: 120px 1fr 400px;
+            gap: 30px;
+        }
+
+        /* Миниатюры (слева) */
+        .thumbnails-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .thumbnail {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+            object-fit: cover;
+        }
+
+        .thumbnail:hover {
+            border-color: #2c5aa0;
+            opacity: 0.8;
+        }
+
+        .thumbnail.active {
+            border-color: #2c5aa0;
+            box-shadow: 0 0 0 1px #2c5aa0;
+        }
+
+        /* Главное изображение */
+        .main-image-container {
+            position: relative;
+            background: #f9f9f9;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: zoom-in;
+        }
+
+        .main-image {
+            width: 100%;
+            display: block;
+            transition: opacity 0.3s;
+        }
+
+        .gift-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ff6b6b;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+
+        .zoom-icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .zoom-icon:hover {
+            background: #fff;
+            transform: scale(1.1);
+        }
+
+        /* Информация о товаре (справа) */
+        .product-info {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .product-info h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 36px;
+            color: #2c5aa0;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: #999;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .installment-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e3f2fd;
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: #2c5aa0;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .installment-badge img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .divider {
+            height: 1px;
+            background: #e0e0e0;
+            margin: 25px 0;
+        }
+
+        .description {
+            color: #666;
+            line-height: 1.8;
+            margin: 20px 0;
+        }
+
+        .features-list {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+        }
+
+        .features-list h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .features-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            color: #666;
+            font-size: 14px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li:before {
+            content: '✓';
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Кнопки действий */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            background: #2c5aa0;
+            color: #fff;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            background: #1e4179;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: #2c5aa0;
+            border: 2px solid #2c5aa0;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            background: #2c5aa0;
+            color: #fff;
+        }
+
+        /* Модальное окно для увеличенного изображения */
+        .zoom-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+
+        .zoom-modal.active {
+            display: flex;
+        }
+
+        .zoom-modal img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .zoom-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .zoom-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* Форма заказа */
+        .order-form {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+
+        .order-form h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #2c5aa0;
+        }
+
+        .form-note {
+            font-size: 12px;
+            color: #999;
+            margin-top: 15px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .product-main {
+                grid-template-columns: 100px 1fr 350px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .product-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .product-main {
+                grid-template-columns: 1fr;
+            }
+
+            .thumbnails-column {
+                flex-direction: row;
+                overflow-x: auto;
+                gap: 15px;
+            }
+
+            .thumbnail {
+                min-width: 80px;
+            }
+
+            .product-info {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="phones">
+                    <a href="tel:+998974025548">+998 (97) 402-55-48</a>
+                    <a href="tel:+998974025549">+998 (97) 402-55-49</a>
+                </div>
+                <div class="working-hours">Пн-Сб: 09:00-18:00</div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <a href="../../index.html" class="logo">ARHITECH</a>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="../../index.html#catalog">Каталог</a></li>
+                        <li><a href="../../index.html#about">О компании</a></li>
+                        <li><a href="../../index.html#contacts">Контакты</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+               <div class="language-selector" id="langSelector">
+                    <button class="lang-toggle" id="languageBtn">
+                        <span class="lang-flag" id="currentFlag">🇷🇺</span>
+                        <span class="lang-text" id="currentLang">Рус</span>
+                        <span class="lang-arrow">▾</span>
+                    </button>
+
+                    <ul class="lang-dropdown" id="languageDropdown">
+                        <li class="active" data-lang="ru" data-flag="🇷🇺">Русский</li>
+                        <li data-lang="uz" data-flag="🇺🇿">O‘zbek</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Заголовок -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>СПАЛЬНЯ «Обвинитель»</h1>
+            <p class="page-subtitle">Качественная мебель для вашего дома</p>
+            <div class="breadcrumb">
+                <a href="../../index.html">Главная</a> /
+                <a href="index.html">Спальня</a> /
+                СПАЛЬНЯ «Обвинитель»
+            </div>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <div class="container">
+        <div class="product-layout">
+            <!-- Боковое меню -->
+            <!-- Основная информация -->
+            <main>
+                <div class="product-main">
+                    <!-- Миниатюры (слева) -->
+                    <div class="thumbnails-column">
+                        <img src="../../images/products/обвинитель.jpeg"
+                             alt="Вид 1"
+                             class="thumbnail active"
+                             onclick="changeMainImage(this, '../../images/products/обвинитель.jpeg')">
+                        <img src="../../images/products/Immobilizer 418 cruiser.jpeg"
+                             alt="Вид 2"
+                             class="thumbnail"
+                             onclick="changeMainImage(this, '../../images/products/Immobilizer 418 cruiser.jpeg')">
+                        <img src="../../images/products/Imperial Interdictor Cruiser(Star Wars).jpeg"
+                             alt="Вид 3"
+                             class="thumbnail"
+                             onclick="changeMainImage(this, '../../images/products/Imperial Interdictor Cruiser(Star Wars).jpeg')">
+                        <img src="../../images/products/Interdictor-class.jpeg"
+                             alt="Вид 4"
+                             class="thumbnail"
+                             onclick="changeMainImage(this, '../../images/products/Interdictor-class.jpeg')">
+                    </div>
+
+                    <!-- Главное изображение (в центре) -->
+                    <div class="main-image-container" onclick="openZoom()">
+                        <img src="" alt="СПАЛЬНЯ Обвинитель" class="main-image" id="mainImage">
+                        <div class="zoom-icon">🔍</div>
+                    </div>
+
+                    <!-- Информация о товаре (справа) -->
+                    <aside class="product-info">
+                        <h1>СПАЛЬНЯ «Обвинитель»</h1>
+
+                        <div class="price-label">Цена:</div>
+                        <div class="product-price">10 400 000 сум</div>
+
+                        <div class="divider"></div>
+
+                        <div class="description">
+                            <p><strong>Современная спальня «Обвинитель»</strong>
+                                — воплощение элегантности и функциональности. Изготовлена из высококачественных материалов с использованием премиальной фурнитуры европейских производителей.</p>
+
+                            <p>В комплект входит удобная кровать с ортопедическим основанием, вместительный шкаф с раздвижными дверями, комод с зеркалом и две прикроватные тумбы.</p>
+
+                        </div>
+
+                        <div class="features-list">
+                            <h3>Преимущества:</h3>
+                            <ul>
+                                <li>Замер помещения бесплатно</li>
+                                <li>Индивидуальное проектирование</li>
+                                <li>Выбор материала, цвета, стиля</li>
+                                <li>Высокое качество мебели</li>
+                                <li>Оперативная доставка и сборка</li>
+                                <li>Гарантия качества 3 года</li>
+                                <li>Доступная стоимость</li>
+                            </ul>
+                        </div>
+
+                        <div class="action-buttons">
+                            <a href="якоря нет" target="_blank" class="btn-primary">
+                                Связаться с менеджером
+                            </a>
+                        </div>
+                    </aside>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Модальное окно для увеличенного изображения -->
+    <div class="zoom-modal" id="zoomModal" onclick="closeZoom()">
+        <span class="zoom-close">×</span>
+        <img src="" alt="Увеличенное изображение" id="zoomImage">
+    </div>
+
+    <!-- Футер -->
+    <footer id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>О компании</h3>
+                    <p>ARHITECH - производство качественной мебели на заказ в Ташкенте и по всему Узбекистану.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="tel:+998974025548">+998 (97) 402-55-48</a></li>
+                        <li><a href="tel:+998974025549">+998 (97) 402-55-49</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>©2025 ARHITECH | Все права защищены</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/navigation.js"></script>
+    <script src="../../js/language.js"></script>
+
+    <script>
+        // Переключение главного изображения
+        function changeMainImage(thumbnail, imageUrl) {
+            // Убрать active со всех миниатюр
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+
+            // Добавить active к выбранной
+            thumbnail.classList.add('active');
+
+            // Плавно изменить главное изображение
+            const mainImage = document.getElementById('mainImage');
+            mainImage.style.opacity = '0.5';
+
+            setTimeout(() => {
+                mainImage.src = imageUrl;
+                mainImage.style.opacity = '1';
+            }, 150);
+        }
+
+        // Открыть увеличенное изображение
+        function openZoom() {
+            const mainImage = document.getElementById('mainImage');
+            const zoomModal = document.getElementById('zoomModal');
+            const zoomImage = document.getElementById('zoomImage');
+
+            zoomImage.src = mainImage.src;
+            zoomModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Закрыть увеличенное изображение
+        function closeZoom() {
+            const zoomModal = document.getElementById('zoomModal');
+            zoomModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Закрытие по Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeZoom();
+            }
+        });
+
+        // Прокрутка к форме
+        function scrollToForm() {
+            const form = document.getElementById('orderForm');
+            form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Отправка формы
+        function submitOrder(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+
+            alert(`Спасибо, ${name}! Ваша заявка принята.\nМы свяжемся с вами по номеру ${phone} в ближайшее время.`);
+            event.target.reset();
+        }
+
+        // Плавная анимация изображения
+        document.getElementById('mainImage').style.transition = 'opacity 0.3s';
+    </script>
+    <script>
+    /* === НАСТРОЙКИ ГАЛЕРЕИ === */
+    const productImages = [
+        '../../images/products/Imperial Interdictor Cruiser(Star Wars).jpeg',
+        '../../images/products/Immobilizer 418 cruiser',
+        '../../images/products/2спП.jpeg',
+        '../../images/products/обвинитель.jpeg'
+    ];
+
+    const thumbnailsContainer = document.getElementById('thumbnails');
+    const mainImage = document.getElementById('mainImage');
+
+    /* === ИНИЦИАЛИЗАЦИЯ === */
+    function initGallery() {
+        if (!productImages.length) return;
+
+        // ставим первое изображение
+        mainImage.src = productImages[0];
+
+        productImages.forEach((src, index) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.className = 'thumbnail';
+            img.alt = `Вид ${index + 1}`;
+
+            if (index === 0) img.classList.add('active');
+
+            img.addEventListener('click', () => changeMainImage(img, src));
+            thumbnailsContainer.appendChild(img);
+        });
+    }
+
+    function changeMainImage(thumbnail, imageUrl) {
+        document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+        thumbnail.classList.add('active');
+
+        mainImage.style.opacity = '0.4';
+        setTimeout(() => {
+            mainImage.src = imageUrl;
+            mainImage.style.opacity = '1';
+        }, 150);
+    }
+
+    /* === ЗАПУСК === */
+    initGallery();
+    </script>
+
+</body>
+</html>
+
